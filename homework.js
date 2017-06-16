@@ -6,7 +6,9 @@ console.log(moment().format());
 
  class FSTransform extends Transform{
      _transform(buffer, encoding, done){
-        this.push(moment().format().toString() + "\n");
+        var timeStr = buffer.toString();
+        var date = new Date(timeStr);
+        this.push(moment(date).format().toString() + "\n");
         done();
      }
  }
